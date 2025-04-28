@@ -39,6 +39,10 @@ namespace _04._23._25Homework.Web.Controllers
         [Authorize]
         public IActionResult NewAd()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return Redirect("/account/login");
+            }
             return View();
         }
 
