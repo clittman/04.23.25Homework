@@ -1,0 +1,23 @@
+﻿@using _04._23._25Homework.Data
+@model AdsViewModel
+
+@foreach(SimpleAd ad in Model.Ads)
+{
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="bg-light p-4 rounded shadow mb-3">
+                <h3>@ad.Title</h3>                
+                <h6>Phone Number: @ad.PhoneNumber</h6>
+                <h4>Details:</h4>
+                <p>@ad.Description</p>
+                @if (ad.UserId == Model.UserId)
+                {
+                    <form method="post" action="/home/deletead">
+                        <input type="hidden" name="id" value="@ad.Id">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+}
